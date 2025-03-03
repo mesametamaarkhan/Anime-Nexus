@@ -151,14 +151,13 @@ const CharacterList = () => {
 
                 {/**Error message here */}
 
-
                 {initialQuery && totalResults > 0 && (
                     <p className='mb-4 text-gray-300'>
                         Found {totalResults} characters matching "{initialQuery}"
                     </p>
                 )}
 
-                {initialQuery && characters.length === 0 && !isLoading && !isError && (
+                {initialQuery && characters.length === 0 && !isLoading && !error && (
                     <div className='text-center py-12'>
                         <p className='text-xl text-gray-300 mb-4'>No characters found matching "${initialQuery}"</p>
                         <button
