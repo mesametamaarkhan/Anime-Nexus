@@ -42,7 +42,7 @@ export const fetchTrendingAnime = async (page = 1, limit = 10) => {
     return res.data;
 };
 
-export const searhCharacters = async (query, page = 1, limit = 10) => {
+export const searchCharacters = async (query, page = 1, limit = 10) => {
     await delay(300);
     const res = await api.get('/characters', {
         params: {
@@ -66,9 +66,30 @@ export const searchAnime = async (query, page = 1, limit = 10) => {
     return res.data;
 };
 
+export const getCharacterById = async (id) => {
+    await delay(300);
+    const res = await api.get(`/character/${id}/full`);
+    return res.data;
+};
+
+export const getCharacterVoiceActors = async (id) => {
+    await delay(300);
+    const res = await api.get(`/characters/${id}/voices`);
+    return res.data;
+};
+
+export const getCharacterAnime = async (id) => {
+    await delay(300);
+    const res = await api.get(`/characters/${id}/anime`);
+    return res.data;
+};
+
 export default {
     fetchTrendingAnime,
     fetchTrendingCharacters,
-    searhCharacters,
+    searchCharacters,
     searchAnime,
+    getCharacterById,
+    getCharacterAnime,
+    getCharacterVoiceActors
 };

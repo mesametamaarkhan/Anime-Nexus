@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Search, X } from 'lucide-react';
+import { searchCharacters, searchAnime } from '../api/animeApi';
 
 const SearchBar = ({ onSearch, darkMode }) => {
     const [query, setQuery] = useState('');
@@ -7,6 +8,46 @@ const SearchBar = ({ onSearch, darkMode }) => {
     const [loading, setLoading] = useState(false);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const searchRef = useRef(null);
+
+    useEffect(() => {
+        const fetchSuggestions = async () => {
+            if(query.length < 2) {
+                setSuggestions([]);
+                return;
+            }
+
+            try {
+                const [charactersResponse, animeResponse] = await Promise.all([
+                    searchCharacters(query, 1, 5),
+                    searchAnime(query, 1, 5)
+                ]);
+
+                const characterSuggestions = charactersResponse.data.map((character) => ({
+                    id: character.mal_id,
+                    name: character.name,
+                    type: 'character',
+                    image_url: character.images?.jpg?.image_url
+                }));
+
+                const animeSuggestions = animeResponse.data.map((anime) => ({
+                    id: anime.mal_id,
+                    name: anime.title,
+                    type: 'anime',
+                    image_url: anime.images?.jpg?.image_url
+                }));
+
+                setSuggestions([...characterSuggestions, ...animeSuggestions]);
+            }
+            catch(err) {
+                console.error('Error while fetching suggestions: ', err);
+            }
+            finally {
+                setLoading(false);
+            }
+        };
+
+        fetchSuggestions();
+    }, [query])
 
     useEffect(() => {
         const handleClickOutside = (event) => {
