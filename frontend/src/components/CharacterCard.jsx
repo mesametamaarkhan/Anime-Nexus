@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Factory } from 'lucide-react';
 
 const CharacterCard = ({ id, name, imageUrl, animeName, favorites, darkMode = true }) => {
   return (
