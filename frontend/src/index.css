@@ -1,68 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --neon-primary: #ff00ff;
+  --neon-secondary: #00ffff;
+  --neon-tertiary: #ffff00;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: 'Oswald', sans-serif;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.neon-glow {
+  text-shadow: 0 0 5px var(--neon-primary), 0 0 10px var(--neon-primary), 0 0 20px var(--neon-primary);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.neon-box {
+  box-shadow: 0 0 5px var(--neon-primary), 0 0 10px var(--neon-primary);
+}
+
+.neon-box-cyan {
+  box-shadow: 0 0 5px var(--neon-secondary), 0 0 10px var(--neon-secondary);
+}
+
+.neon-box-yellow {
+  box-shadow: 0 0 5px var(--neon-tertiary), 0 0 10px var(--neon-tertiary);
+}
+
+.glitch-effect {
+  position: relative;
+}
+
+.glitch-effect::before,
+.glitch-effect::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-effect::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--neon-secondary);
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim-1 5s infinite linear alternate-reverse;
+}
+
+.glitch-effect::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--neon-tertiary);
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim-2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% {
+    clip: rect(24px, 550px, 90px, 0);
   }
-  a:hover {
-    color: #747bff;
+  20% {
+    clip: rect(62px, 550px, 130px, 0);
   }
-  button {
-    background-color: #f9f9f9;
+  40% {
+    clip: rect(58px, 550px, 14px, 0);
+  }
+  60% {
+    clip: rect(91px, 550px, 46px, 0);
+  }
+  80% {
+    clip: rect(100px, 550px, 67px, 0);
+  }
+  100% {
+    clip: rect(8px, 550px, 95px, 0);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip: rect(85px, 550px, 140px, 0);
+  }
+  20% {
+    clip: rect(40px, 550px, 18px, 0);
+  }
+  40% {
+    clip: rect(76px, 550px, 107px, 0);
+  }
+  60% {
+    clip: rect(12px, 550px, 59px, 0);
+  }
+  80% {
+    clip: rect(54px, 550px, 93px, 0);
+  }
+  100% {
+    clip: rect(34px, 550px, 29px, 0);
+  }
+}
+
+.parallax-container {
+  perspective: 1000px;
+}
+
+.parallax-element {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+}
+
+/* Dark mode styles */
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: #0f0f1a;
+  color: #f0f0f0;
+}
+
+.dark .neon-text {
+  color: #fff;
+  text-shadow: 0 0 5px var(--neon-primary), 0 0 10px var(--neon-primary);
+}
+
+.dark .neon-border {
+  border: 1px solid rgba(255, 0, 255, 0.5);
+  box-shadow: 0 0 5px var(--neon-primary), 0 0 10px var(--neon-primary);
+}
+
+.hover-card {
+  transition: all 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: var(--neon-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
