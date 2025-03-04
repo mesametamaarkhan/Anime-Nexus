@@ -68,7 +68,7 @@ export const searchAnime = async (query, page = 1, limit = 10) => {
 
 export const getCharacterById = async (id) => {
     await delay(300);
-    const res = await api.get(`/character/${id}/full`);
+    const res = await api.get(`/characters/${id}`);
     return res.data;
 };
 

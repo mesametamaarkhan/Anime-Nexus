@@ -3,6 +3,7 @@ import { Routes, Route, Router, useNavigate } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import CharacterList from './pages/CharacterList.jsx';
 import Navbar from './components/Navbar.jsx';
+import CharacterDetail from './pages/CharacterDetail.jsx';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -17,6 +18,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/characters" element={<CharacterList />} />
+          <Route path="/character/:id" element={<CharacterDetail />} />
         </Routes>
     </div>
   );

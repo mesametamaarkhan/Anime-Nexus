@@ -94,9 +94,6 @@ const Home = () => {
                         <p className='text-xl md:text-2xl mb-8 text-gray-300'>
                             Discover your favorite anime characters and series
                         </p>
-                        <div className='max-w-2xl mx-auto'>
-                            <SearchBar onSearch={onSearch} darkMode={true} />
-                        </div>
                     </motion.div>
                 </div>
             </div>
