@@ -62,7 +62,6 @@ const SearchBar = ({ onSearch, darkMode }) => {
         };
     }, []);
 
-
     const handleSubmit = () => {
         e.preventDefault();
         if(query.trim()) {

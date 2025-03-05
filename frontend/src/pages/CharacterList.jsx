@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Search, Filter, X } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import { searchCharacters } from '../api/animeApi.js';
-import Loader from '../components/Loader.jsx';
-import CharacterCard from '../components/CharacterCard.jsx';
+import { Loader, CharacterCard } from '../components/index.js';
 
 const CharacterList = () => {
     const location = useLocation();

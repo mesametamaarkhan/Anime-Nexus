@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, Calendar, ExternalLink, Heart, Mic, User, Tv } from 'lucide-react';
 import { getCharacterById, getCharacterAnime, getCharacterVoiceActors } from '../api/animeApi.js';
-import Loader from '../components/Loader.jsx';
-import { motion, transform } from 'framer-motion';
+import { Loader } from '../components/index.js';
+import { motion } from 'framer-motion';
 
 const CharacterDetail = () => {
     const { id } = useParams();
