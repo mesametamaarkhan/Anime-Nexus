@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Loader from '../components/Loader';
-import SearchBar from '../components/SearchBar';
 import CharacterCard from '../components/CharacterCard';
 import { fetchTrendingCharacters, fetchTrendingAnime } from '../api/animeApi';
 
@@ -21,7 +20,7 @@ const Home = () => {
 
             try {
                 const [charactersResponse, animeResponse] = await Promise.all([
-                    fetchTrendingCharacters(1,8),
+                    fetchTrendingCharacters(1,20),
                     fetchTrendingAnime(1,6)
                 ]);
 
@@ -92,7 +91,7 @@ const Home = () => {
                                 Anime Character Explorer
                         </h1>
                         <p className='text-xl md:text-2xl mb-8 text-gray-300'>
-                            Discover your favorite anime characters and series
+                            Discover your favorite anime characters
                         </p>
                     </motion.div>
                 </div>

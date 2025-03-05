@@ -1,25 +1,13 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Tv, Search, Sun, Moon, X, Menu } from 'lucide-react';
-import SearchBar from './SearchBar';
 
 const Navbar = ({ darkMode, toggleDarkMode}) => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isSearchOpen, setIsSearchOpen] = useState(false);   
-    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
-    };
-
-    const toggleSearch = () => {
-        setIsSearchOpen(!isSearchOpen);
-    };
-
-    const handleSearchSubmit = (query) => {
-        navigate(`/character?query=${encodeURIComponent(query)}`);
-        setIsSearchOpen(false);
     };
 
     return (
@@ -38,12 +26,6 @@ const Navbar = ({ darkMode, toggleDarkMode}) => {
                     <div className='hidden md:flex items-center space-x-4'>
                         <button 
                             className={`p-2 rounded-full ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}
-                            onClick={toggleSearch}
-                        >
-                            <Search className={darkMode ? 'text-white' : 'text-gray-600'} />
-                        </button>
-                        <button 
-                            className={`p-2 rounded-full ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}
                             onClick={toggleDarkMode}
                         >
                             {darkMode ? (
@@ -55,12 +37,6 @@ const Navbar = ({ darkMode, toggleDarkMode}) => {
                     </div>
 
                     <div className='flex md:hidden items-center'>
-                        <button 
-                            className={`p-2 rounded-full ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}
-                            onClick={toggleSearch}
-                        >
-                            <Search className={darkMode ? 'text-white' : 'text-gray-600'} />
-                        </button>
                         <button 
                             className={`p-2 rounded-full ${darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}
                             onClick={toggleMenu}
@@ -95,12 +71,6 @@ const Navbar = ({ darkMode, toggleDarkMode}) => {
                             )}
                         </button>
                     </div>
-                </div>
-            )}
-
-            {isSearchOpen && (
-                <div className={`absolute top-16 left-0 right-0 p-4 ${darkMode ? 'bg-cyberpunk-dark border-b border-neon-pink/30' : 'bg-white shadow-md'}`}>
-                    <SearchBar onSearch={handleSearchSubmit} darkMode={darkMode} />
                 </div>
             )}
         </nav>

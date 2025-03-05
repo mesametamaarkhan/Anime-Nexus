@@ -163,6 +163,7 @@ const CharacterDetail = () => {
                                         onError={(e) => {
                                             e.target.src = 'https://via.placeholder.com/350x500?text=No+Image';
                                         }}
+                                        className='w-full h-full object-cover'
                                     />
 
                                 </div>
